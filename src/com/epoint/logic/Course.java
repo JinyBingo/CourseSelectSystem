@@ -85,13 +85,13 @@ public class Course implements Serializable{
     			
 				
 						//try {
-							try {
-								if(fin.available()==0)
-									System.out.println("课程列表为空！");
-							} catch (IOException e1) {
+							//try {
+								//if(fin.available()==0)
+									
+							//} catch (IOException e1) {
 								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
+							//	e1.printStackTrace();
+							//}
 							
 							
 								try {
@@ -105,7 +105,7 @@ public class Course implements Serializable{
 					
 							try {
 								//if(!(inp.available()==0))
-                           
+                           if(inp!=null)
 								map=(HashMap<String, Course>) inp.readObject();
 							} catch (ClassNotFoundException e) {
 								// TODO Auto-generated catch block
@@ -117,12 +117,7 @@ public class Course implements Serializable{
  
 					   
 					
-						try {
-							inp.close();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						
 					
 					
 						

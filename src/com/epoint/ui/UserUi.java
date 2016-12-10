@@ -164,7 +164,7 @@ public class UserUi {
 				e.printStackTrace();
 			}break;
 		case "3":Admin.deleteStudent(u);break;
-		case "4":Admin.changeCourse(u);break;
+		case "4":Admin.changeStudent(u);break;
 		case "5":try {
 				AdminManagebar(u);
 			} catch (ClassNotFoundException | IOException e) {
@@ -301,7 +301,7 @@ public static void addStudentbar(User u)
 		           break;
 		
 		case "2":Admin.seeCourse(u);break;
-		case "3":Admin.deleteStudent(u);break;
+		case "3":Admin.deleteCourse(u);break;
 		case "4":Admin.changeCourse(u);break;
 		case "5":AdminManagebar(u);break;
 		case "6":System.out.println("注销登录成功！再见！");

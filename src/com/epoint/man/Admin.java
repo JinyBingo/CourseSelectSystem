@@ -328,8 +328,12 @@ public class Admin extends User implements Serializable{
 	{
 		System.out.println("请输入查看选项: \n 1-查看所有课程 \n 2-查询指定课程");//如果查询显示列表为空则表示课程不存在
 		HashMap<String,Course> map=Course.ReadCourseFromFile();
+		HashMap<String,User>  map1=User.ReadUserFromFile();
 		if(map.size()==0)
-			System.out.println("课程列表为空，请先新增课程！");
+			{
+			System.out.println("课程列表为空，自动返回上级菜单！");
+			UserUi.AdminCourseManagebar(u);
+			}
 		else
 		{
 			Scanner in=new Scanner(System.in);
@@ -345,15 +349,21 @@ public class Admin extends User implements Serializable{
 			       for(Map.Entry<String, Course>entry:map.entrySet())
 			         {
 				  
-			    	   if(u.checkUsertype()==1)
-				          System.out.println(entry.getKey()+"     "+entry.getValue().courseName+"    "+entry.getValue().courseTeacherId+"    "+entry.getValue().coursetype);
-			    	   else if(u.department.equals(entry.getValue().coursetype)&&u.checkUsertype()==2)//普通管理员
-			    		   System.out.println(entry.getKey()+"     "+entry.getValue().courseName+"    "+entry.getValue().courseTeacherId+"    "+entry.getValue().coursetype); 
-			    	   else if(u.checkUsertype()==3&&entry.getValue().courseTeacherId.equals(u.loginId))
-			    		   System.out.println(entry.getKey()+"     "+entry.getValue().courseName+"    "+entry.getValue().courseTeacherId+"    "+entry.getValue().coursetype); 
+			    	   //if(u.checkUsertype()==1)
+				          
+			    		   //System.out.println(entry.getKey()+"     "+entry.getValue().courseName+"    "+entry.getValue().courseTeacherId+"    "+entry.getValue().coursetype);
+			    	   //else if(u.checkUsertype()==2){
+			    		  // if(entry.)
+			    	      // if(u.department.equals(entry.getValue().coursetype))//普通管理员
+			    		   System.out.println(entry.getKey()+"     "+entry.getValue().courseName+"    "+entry.getValue().courseTeacherId+"    "+entry.getValue().coursetype);
+			    	         //                       }
+			    	   //else if(u.checkUsertype()==3){
+			    	   // if(entry.getValue().courseTeacherId.equals(u.loginId))
+			    		 //  System.out.println(entry.getKey()+"     "+entry.getValue().courseName+"    "+entry.getValue().courseTeacherId+"    "+entry.getValue().coursetype);
+			    	    
 			    	  
-			         }
-				     
+			         
+		}  
 				    	 
 			       System.out.println("1-返回上级菜单\n2-返回主菜单\n3-注销登录");
 			            String choose2=in.nextLine();
@@ -409,7 +419,7 @@ public class Admin extends User implements Serializable{
 		}
 	}
 	
-	public void deleteCourse(User u) {
+	public static void deleteCourse(User u) {
 		boolean b=false;
 		System.out.println("请输入需要删除指定课程号:");
 		HashMap<String,Course> map=Course.ReadCourseFromFile();
